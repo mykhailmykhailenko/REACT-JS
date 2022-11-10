@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client';
+import Section from './Section.js';
+import {API_BASE, getHello} from './constants';
 
- const component = React.createElement(Section);
+ const component = <Section />;
 
 
 const rootElement = document.querySelector('#root');
