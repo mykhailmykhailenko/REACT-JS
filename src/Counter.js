@@ -12,18 +12,22 @@ class Counter extends React.Component {
         this.setState({
             count: this.state.count+1
         });
-        // this.state.count++ НЕ МОЖНА!!!
-        // this.state.count = {} НЕ МОЖНА!
-        // state unmutable
     }
 
+    decrement = () => {
+        if (this.state.count > 0) {
+            this.setState({
+                count: this.state.count -1
+            });
+        };
+    }
 
     render(){
         return (
             <div>
                 <h1>{this.state.count}</h1>
                 <button onClick={this.increment}>+</button>
-                <button>-</button>
+                <button onClick={this.decrement}>-</button>
             </div>
         )
     }
