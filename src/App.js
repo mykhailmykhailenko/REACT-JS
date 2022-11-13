@@ -1,40 +1,19 @@
- 
-import React from "react";
-import Greeting from './components/Greeting/index'
-import{userData} from './components/Greeting/userData'
+import React from 'react'
+import Greeting from './components/Greeting';
 
+const userArray = ['John', 'Alex', 'Jake', 'Jane', 'Josh']
 
 class App extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            users: ['Blake', 'Alex', 'Raine', 'Jane', 'Kosh'],
-            isSort: true
-        }
 
-   
-    }
+    userMap = () => userArray.map((name) => <Greeting userName={name} />)
 
-    userMap = () => this.state.users.map((name) => <Greeting userName={name}/>)
-    
-    sortUsers = () => {
-        const {users, isSort} = this.state;
-        const newUsers = [...users];
-        newUsers.sort((a,b) => (a>b && isSort) ? 1 : -1);
-        this.setState ({
-            users: newUsers,
-            isSort: !isSort
-        })
-    }
-
-
-    render () {
+    render() {
         return (
             <section>
-                <button onClick={this.sortUsers}>Sorted</button>
-                {this.userMap()}
+               {this.userMap()}
             </section>
         )
     }
 }
+
 export default App;
