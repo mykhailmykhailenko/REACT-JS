@@ -1,14 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client';
-import Counter from './Counter';
-
-// import Section from './Section.js';
-
-
-//  const component = <Section />;
+import Counter from './components/Counter';
+import Greeting from './components/Greeting';
 
 
 const rootElement = document.querySelector('#root');
 const root = ReactDOM.createRoot(rootElement);
-root.render(<Counter />);
-
+root.render(
+    // React.createElement(Greeting, {userName: 'John'})
+    <section>
+    <Greeting userName="John"/>
+    <Greeting userName="Alex"/>
+    <Greeting userName="Jake"/>
+    <Greeting userName="Jane"/>
+    <Greeting userName="Josh"/>
+    </section>
+);
