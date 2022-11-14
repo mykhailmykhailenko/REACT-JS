@@ -1,6 +1,6 @@
 import React from "react";
-import UserDashboard from "./components/UserDashboard";
-import Tree from './components/Tree';
+
+import Timer from "./components/Timer"
 
 class App extends React.Component {
     constructor(props){
@@ -13,9 +13,8 @@ class App extends React.Component {
     render () {
         return (
             <div>
-                <button onClick={()=>{this.setState({isOn: false})}}>Unmount Tree</button>
-                 {this.state.isOn ? <Tree /> : null} 
-           </div>
+              {this.state.isOn ? <Timer /> : null}
+            </div>
         )
     }
 }
