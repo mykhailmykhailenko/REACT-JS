@@ -51,10 +51,13 @@ class Timer extends Component {
 
     render() {
         const {time, isRunning} = this.state;
+
+        const buttonText =  isRunning ? 'Stop' : 'Start';
+        const buttonClassname = isRunning ? 'green-btn' : 'red-btn';
         return (
             <div>
                <h1>{format(time, 'HH:mm:ss')}</h1> 
-               <button onClick={this.clickHandler}>{ isRunning ? 'Stop' : 'Start'}</button>
+               <button onClick={this.clickHandler} className={buttonClassname}>{buttonText}</button>
                <button onClick={this.reset}>Clear</button>
             </div>
         );
