@@ -1,5 +1,5 @@
 import React from "react";
-import Scene from './components/Scene';
+import LoginForm from './components/LoginForm'
 
 class App extends React.Component {
     constructor(props){
@@ -11,9 +11,7 @@ class App extends React.Component {
 
     render () {
         return (
-
-            <Scene />
-
+           <LoginForm />
         )
     }
 }
