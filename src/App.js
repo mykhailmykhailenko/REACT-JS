@@ -1,6 +1,4 @@
 import React from "react";
-import UserDashboard from "./components/UserDashboard";
-import Timer from './components/Timer';
 import Scene from './components/Scene';
 
 class App extends React.Component {
