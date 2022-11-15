@@ -1,6 +1,5 @@
  
 import React from 'react';
-
 class LoginForm extends React.Component{
     constructor(props) {
         super(props);
@@ -11,16 +10,20 @@ class LoginForm extends React.Component{
     }
 
     changeHandler = ({target: {value, name}}) => {
-        console.log(name, value)
+        // console.log(name, value)
         this.setState({
             [name]: value
         })
     }
 
+    submitHandler = (event) => {
+        event.preventDefault();
+        console.dir(this.state);
+    }
 
     render(){
         return (
-            <form>
+            <form onSubmit={this.submitHandler}>
                 <input 
                     type="text" 
                     placeholder='Type your email' 
@@ -38,12 +41,11 @@ class LoginForm extends React.Component{
         );
     }
 }
-
 export default LoginForm;
 
 
 /*
-Керовані компоненти
+Керовані елементи
 1. Стан компоненти (state) є єдиним джерелом правди для елементів форми. 
 2. Елемент форми отримує свій стан від стану компоненти. Відображає те, що в стані.
 3. Якщо з елементом форми щось відбувається (змінюється його наповнення), ми маємо оновити стан компоненти.
