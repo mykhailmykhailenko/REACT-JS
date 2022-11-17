@@ -14,7 +14,16 @@ class TodoList extends Component {
 
     mapList = () => {
         const {list} = this.state;
-       return list.map(elem => <TodoItem text={elem.body} key={elem.id}/>);
+       return list.map(elem => <TodoItem text={elem.body} key={elem.id} id={elem.id} deleteCallback={this.deleteItem}/>);
+    }
+
+
+    deleteItem = (id) => {
+        const {list} = this.state;
+      const filteredArray = list.filter(obj => obj.id !== id);
+      this.setState({
+        list: filteredArray
+      });
     }
 
     addNewItem = (data) => {
