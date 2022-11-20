@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import UserCard from "../UserCard";
 import Spiner from '../Spiner';
 import {getUsers} from '../../api';
+import UsersList from '../UsersList';
 
 class UserDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             users: [],
-            isSort: true,
             error: null,
-            isFetching: true
+            isFetching: true,
+            page: 1
         }
     }
-
 
     componentDidMount(){
         this.getData();
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.page !== this.state.page) {
+            this.getData();
+        }
+
+    }
+
 
     getData = () => {
-
-        getUsers()
+        const {page} = this.state;
+        getUsers({page})
         .then(data => {
             this.setState({
                 users: data.results
@@ -40,28 +46,31 @@ class UserDashboard extends Component {
         })
     }
 
-
-    userMap = () => this.state.users.map((userObj) => <UserCard user={userObj} key={userObj.login.uuid}/>);
-
-    sortUsers = () => {
-        const {users, isSort} = this.state;
-        const newUsers = [...users];
-        newUsers.sort((a,b) => (a.name > b.name && isSort) ? 1 : -1);
+    next = () => {
+        const {page} = this.state;
         this.setState({
-            users: newUsers,
-            isSort: !isSort
+            page: page + 1
         })
     }
+    prev = () => {
+        const {page} = this.state;
+        if (page > 1) {
+            this.setState({
+                page: page - 1
+            })
+        }
+    }
+
 
     render() {
-        const {users, error, isFetching} = this.state;
+        const {users, error, isFetching, page} = this.state;
         return (
             <section>
-                <button onClick={this.sortUsers}>Sorted</button>
+                <button onClick={this.prev}>{'<'}</button>
+                    <span>{page}</span>
+                <button onClick={this.next}>{'>'}</button>
                 {error && <div>Oops! Something goes wrong!</div> }
-                {users && (<div className="card-container">
-                    {this.userMap()}
-                         </div>)}
+                {users && <UsersList users={users}/>}
                  {isFetching && <Spiner />}
 
             </section>
