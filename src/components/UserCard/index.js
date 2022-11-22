@@ -1,6 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
+
 class UserCard extends React.Component {
+    static defaultProps = {
+    user: {
+        name: {
+            first: 'Anonym',
+            last: 'Anon'
+        },
+        email: '',
+        picture: {
+            large: ''
+        }
+ }
+}
 
     render() {
         const {user: {name: {first, last}, email, picture: {large}}} = this.props;
@@ -16,4 +30,21 @@ class UserCard extends React.Component {
         )
     }
 }
+
+
+UserCard.propTypes = {
+    user: PropTypes.shape({
+        name: PropTypes.shape({
+            first: PropTypes.string.isRequired,
+            last: PropTypes.string.isRequired
+        }).isRequired,
+        email: PropTypes.string.isRequired,
+        picture: PropTypes.shape({
+            large: PropTypes.string.isRequired
+        })
+    }).isRequired
+}
+
+
+
 export default UserCard;
