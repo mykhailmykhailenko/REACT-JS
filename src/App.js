@@ -1,5 +1,6 @@
 import React from "react";
-import UserDashboard from "./components/UserDashboard";
+import ProductsList from "./components/ProductsList";
+
 
 class App extends React.Component {
     constructor(props){
@@ -8,9 +9,8 @@ class App extends React.Component {
     render () {
 
         return (
-         <UserDashboard />
+        <ProductsList />
         )
     }
 }
-
 export default App;
