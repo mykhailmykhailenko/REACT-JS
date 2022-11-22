@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 const TodoItem = (props) => {
-
 const deleteHandler = () => {
     const {id, deleteCallback} = props;
     deleteCallback(id);
@@ -12,12 +10,15 @@ const deleteHandler = () => {
     );
 }
 
+TodoItem.defaultProps = {
+    text: 'Default text',
+    deleteCallback: ()=>{},
+    id: 0
+}
 
 TodoItem.propTypes = {
     id: PropTypes.number.isRequired,
     text: PropTypes.string,
     deleteCallback: PropTypes.func.isRequired
 }
-
 export default TodoItem;
- 
