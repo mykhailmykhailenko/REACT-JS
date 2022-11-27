@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-class Counter extends React.Component {
+class Counter extends React.PureComponent {
     constructor(props){
         super(props);
         this.state = {
@@ -9,12 +9,6 @@ class Counter extends React.Component {
         }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if(nextProps.step !== this.props.step){
-            return false;
-        }
-        return true;
-    }
 
     increment = () => {
         const {step} = this.props;
