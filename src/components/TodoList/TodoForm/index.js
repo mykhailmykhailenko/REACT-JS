@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import styles from './TodoForm.module.css';
-import cx from 'classnames';
-
 class TodoForm extends Component {
     constructor(props) {
         super(props);
@@ -35,10 +33,9 @@ class TodoForm extends Component {
 
     render() {
         const {todo, isInputValid} = this.state;
-        const cnames = cx([styles.input], {
-            [styles.valid]: isInputValid,
-            [styles.invalid]: !isInputValid
-        });
+        const cnames = cx({
+
+        })
  //       const cnames = `${styles.input} ${isInputValid ? [styles.valid] : [styles.invalid]}`
         return (
             <form onSubmit={this.submitHandler} >
