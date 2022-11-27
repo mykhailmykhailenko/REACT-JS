@@ -1,20 +1,24 @@
 import React from "react";
-import TodoItem from './components/TodoList/TodoItem';
-import UserCard from "./components/UserCard";
+
 
 
 class App extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    delete = () => {
-        console.log('delete callback')
-    }
+
+
+
     render () {
 
         return (
             <>
-           <UserCard/>
+            <button onClick={()=>{
+               window.location.assign('https://rozetka.com.ua/');
+            }}>Assing</button>
+            <button onClick={()=>{
+            window.location.reload();
+            }}>Reload</button>
+            <button onClick={()=>{
+             window.location.replace('https://wiki.postgresql.org/wiki/Main_Page');
+            }}>Replace</button>
             </>
         )
     }
