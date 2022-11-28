@@ -1,13 +1,13 @@
 import React from "react";
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import LoginForm from './components/LoginForm';
+import Parent from "./components/RenderPropExampls/Parent";
 import TodoList from './components/TodoList';
 import CounterPage from './pages/CounterPage';
 import LoaderPage from './pages/LoaderPage';
 import WindowSizerPage from "./pages/WindowSizesPage";
-
 class App extends React.Component {
-
+  
     render () {
         return (
             <BrowserRouter>
@@ -18,6 +18,7 @@ class App extends React.Component {
                     <li><Link to="/login">Go to LoginForm</Link></li>
                     <li><Link to="/windowsizer">Go to WindowSizerPage</Link></li>
                     <li><Link to="/todo">Go to Todo</Link></li>
+                    <li><Link to="/parent-child">Go to render-props</Link></li>
                 </ul>
                 <Routes>
                     <Route path="/" element={<Home />}/>
@@ -26,6 +27,7 @@ class App extends React.Component {
                     <Route path="/windowsizer" element={<WindowSizerPage />}/>
                     <Route path="/login" element={<LoginForm />}/>
                     <Route path="/todo" element={<TodoList />}/>
+                    <Route path="/parent-child" element={<Parent />}/>
                     <Route path="*" element={<NotFound />}/>
                 </Routes>
             </BrowserRouter>
