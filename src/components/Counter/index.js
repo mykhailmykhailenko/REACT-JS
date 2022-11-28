@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from 'prop-types';
-
 class Counter extends React.PureComponent {
     constructor(props){
         super(props);
@@ -8,15 +7,12 @@ class Counter extends React.PureComponent {
             count: 0
         }
     }
-
-
     increment = () => {
         const {step} = this.props;
         this.setState({
             count: this.state.count + step
         });
     }
-
     decrement = () => {
         const {step} = this.props;
             this.setState({
@@ -26,23 +22,17 @@ class Counter extends React.PureComponent {
 
     render(){
         console.log('counter render');
-        return (
-            <div>
-                <h1>{this.state.count}</h1>
-                <button onClick={this.increment}>+</button>
-                <button onClick={this.decrement}>-</button>
-            </div>
-        )
+        return this.props.children({    
+            count: this.state.count, 
+            increment: this.increment,
+            decrement: this.decrement});
     }
 }
 
 Counter.defaultProps = {
     step: 5
 }
-
 Counter.propTypes = {
     step: PropTypes.number
 }
-
-
 export default Counter;
