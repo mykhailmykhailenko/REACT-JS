@@ -1,43 +1,41 @@
 import React from "react";
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
-import LoginForm from './components/LoginForm';
-import Parent from "./components/RenderPropExampls/Parent";
-import TodoList from './components/TodoList';
-import CounterPage from './pages/CounterPage';
-import LoaderPage from './pages/LoaderPage';
-import WindowSizerPage from "./pages/WindowSizesPage";
+import Tree from "./components/Tree";
+import UserContext from "./contexts";
+
 class App extends React.Component {
-  
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: {
+                firstName: 'John',
+                lastName: 'Doe',
+                email: 'mail.fdsdf@fsddf',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4jFqy72BnOtX9KZVGFax-w-D2GrrN-j_qpfG6K_U5SDhbFA-AJP7oXWdGWsi_amI8bsY&usqp=CAU' 
+            }
+        }
+    }
+
+    logOutCallback = () =>{
+        this.setState({
+            user: {}
+        })
+    }
+
     render () {
+        console.log(UserContext);
         return (
-            <BrowserRouter>
-                <ul>
-                    <li><Link to="/">Go to Home</Link></li>
-                    <li><Link to="/loader">Go to Loader</Link></li>
-                    <li><Link to="/counter">Go to CounterPage</Link></li>
-                    <li><Link to="/login">Go to LoginForm</Link></li>
-                    <li><Link to="/windowsizer">Go to WindowSizerPage</Link></li>
-                    <li><Link to="/todo">Go to Todo</Link></li>
-                    <li><Link to="/parent-child">Go to render-props</Link></li>
-                </ul>
-                <Routes>
-                    <Route path="/" element={<Home />}/>
-                    <Route path="/loader" element={<LoaderPage />}/>
-                    <Route path="/counter" element={<CounterPage />}/>
-                    <Route path="/windowsizer" element={<WindowSizerPage />}/>
-                    <Route path="/login" element={<LoginForm />}/>
-                    <Route path="/todo" element={<TodoList />}/>
-                    <Route path="/parent-child" element={<Parent />}/>
-                    <Route path="*" element={<NotFound />}/>
-                </Routes>
-            </BrowserRouter>
+            <UserContext.Provider value={[this.state.user, this.logOutCallback]}>
+                <Tree/>
+            </UserContext.Provider>
         )
     }
 }
+
 export default App;
-const NotFound = () => {
-    return <div>Page not found</div>
-}
-const Home = () => {
-    return <h1>You are home now</h1>
-}
+
+/*
+Контекст має три умови
+1. Створити контекст
+2. Огорнути дерево компонент у компонент Provider, передати значення у проп value
+3. Підписати конкретні компоненти, яким необхідно ось це значення, на оновлення контексту (за допомогою Consumer)
+*/
