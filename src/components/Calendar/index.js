@@ -2,8 +2,7 @@
  import CurrentDay from './CurrentDay'
  import CalendarBody from './CalendarBody'
  import './style.css'
-//  import Day from './CalendarBody/Day';
-//  import CalendarContext from '../../contexts/CalendarContext';
+ import CalendarContext from '../../contexts/CalendarContext';
 
  
  class Calendar extends Component {
@@ -14,11 +13,19 @@
         }
 
     }
+
+    changeCurrentDay = () => {
+        this.setState({
+            currentDay: {}
+        })
+    }
+
     
     
     render() {
         const {currentDay} = this.state;
         return (
+            <CalendarContext.Provider value = {[currentDay, this.changeCurrentDay]}>
             <div className='calendar'>
                 <div className='currentDate'>
                     <CurrentDay day={currentDay} />
@@ -26,8 +33,8 @@
                 <div className='currentMonth'>
                     <CalendarBody day={currentDay}/>
                 </div>
-            
             </div>
+            </CalendarContext.Provider>
 
         );
     }
