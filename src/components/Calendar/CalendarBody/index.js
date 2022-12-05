@@ -1,6 +1,6 @@
  import React from 'react';
  import Month from './Month'
- import Day from './Day';
+
  import './style.css'
 
 
@@ -17,7 +17,7 @@
          <table>
             <thead>
                <tr>
-                    {weekDays.map(d => <td>{d}</td>)}
+                    {weekDays.map(d => <td className='weeksName'>{d}</td>)}
                </tr>
             </thead>
             <Month month='12'/>

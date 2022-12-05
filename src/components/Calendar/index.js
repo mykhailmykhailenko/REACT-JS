@@ -9,29 +9,32 @@
     constructor(props) {
         super (props);
         this.state = {
-            currentDay: new Date()
+            currentDay: new Date(),
+            isOn: true
         }
 
     }
 
-    changeCurrentDay = () => {
+    
+    changeCurrentDay = (value) => {
         this.setState({
-            currentDay: {}
+            currentDay: value,
         })
     }
 
     
     
     render() {
-        const {currentDay} = this.state;
+       
+        const {currentDay, isOn} = this.state;
         return (
-            <CalendarContext.Provider value = {[currentDay, this.changeCurrentDay]}>
+            <CalendarContext.Provider value = {[currentDay, isOn, this.changeCurrentDay]}>
             <div className='calendar'>
                 <div className='currentDate'>
                     <CurrentDay day={currentDay} />
                 </div>
                 <div className='currentMonth'>
-                    <CalendarBody day={currentDay}/>
+                    <CalendarBody />
                 </div>
             </div>
             </CalendarContext.Provider>

@@ -1,16 +1,23 @@
-import { format, getMonth } from 'date-fns';
+import { format, getMonth} from 'date-fns';
 import React from 'react';
-import cx from 'classnames';
 import {withCalendar} from '../../../../HOCs/withCalendar';
+import styles from './Day.module.css'
+
 
 
 const Day = (props) => {
 
     
     const {currentDay, day, changeCurrentDay} = props;
-    // const cn = cx(styles)
-    // getMonth(currentDay) === getMonth(day)// если они не равні вернуть null или ' '
     const theDay  = format(day, 'd')
+   
+    const cn = (format(currentDay, 'd') === format(day, 'd')) ? [styles.dateValid] : [styles.dateInvalid];
+   
+    const changeDay = () => {
+        if (format(currentDay, 'd') !== format(day, 'd')) {
+            changeCurrentDay(day)
+        }
+    }
 
     const checkDays = () => {
         if (getMonth(currentDay) === getMonth(day)) {
@@ -21,7 +28,8 @@ const Day = (props) => {
     }
     
     return (
-        <td >{checkDays()}</td>
+       
+        <td onClick={changeDay} className={cn} >{checkDays()}</td>
                  )
           
     
@@ -32,6 +40,3 @@ const wrappedDays = withCalendar(Day);
 
 export default wrappedDays;
  
-// прокидивать состояние через контекст или класовой
-//getMonth
-// context -> newDate( )

@@ -1,13 +1,8 @@
-import { getWeeksInMonth } from 'date-fns';
+
 import React from 'react';
 import Week from '../Week';
 
-//TODO getWeekInMonth
 
-// const resultWeeks = getWeeksInMonth(new Date(), 12)
-// const arr = new Array(7)
-// .fill(null)
-// .map((el ,index) => <Day day={addWeeks(startOfWeek,index)}/>)
 
 const Month = (props) => {
     return (
