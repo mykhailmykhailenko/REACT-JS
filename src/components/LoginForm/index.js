@@ -1,4 +1,3 @@
- 
 import React from 'react';
 class LoginForm extends React.Component{
     constructor(props) {
@@ -10,17 +9,15 @@ class LoginForm extends React.Component{
     }
 
     changeHandler = ({target: {value, name}}) => {
-        // console.log(name, value)
         this.setState({
             [name]: value
         })
     }
-
     submitHandler = (event) => {
         event.preventDefault();
         console.dir(this.state);
     }
-
+    
     render(){
         return (
             <form onSubmit={this.submitHandler}>
@@ -42,8 +39,6 @@ class LoginForm extends React.Component{
     }
 }
 export default LoginForm;
-
-
 /*
 Керовані елементи
 1. Стан компоненти (state) є єдиним джерелом правди для елементів форми. 
