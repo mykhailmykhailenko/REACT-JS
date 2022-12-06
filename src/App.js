@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import MouseTracker from "./components/MouseTracker";
+import WindowSizer from "./components/WindowSizer";
 
 function App(props) {
    const [isVisible, setVisible] = useState(true);
 
     return (
-        <> {isVisible && <MouseTracker />}</>
+        // <> {isVisible && <MouseTracker />}</>
+        <WindowSizer />
     )
 }
 
