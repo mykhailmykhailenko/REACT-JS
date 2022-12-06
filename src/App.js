@@ -18,13 +18,12 @@ class App extends React.Component {
             theme: THEMES.LIGHT
         }
     }
-
     changeThemeCallback = (theme) => {
         this.setState({
             theme
         })
     }
-
+    
     logOutCallback = () =>{
         this.setState({
             user: {}
@@ -36,7 +35,7 @@ class App extends React.Component {
             <ThemeContext.Provider value={[theme, this.changeThemeCallback]}>
                 <UserContext.Provider value={[user, this.logOutCallback]}>
                     <Header />
-                    <Tree/>
+                    <Tree />
                 </UserContext.Provider>
             </ThemeContext.Provider>
         )
