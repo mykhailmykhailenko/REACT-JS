@@ -1,34 +1,33 @@
 import React, {useEffect, useState} from 'react';
 
 const Counter = () => {
-
     const [count, setCount] = useState(0);
+    const [step, setStep] = useState(2);
 
     useEffect(()=>{
         const handleClick = () => {
-            setCount((count) => count+1);
+            setCount((count) => count+step);
         }
-
+        console.log('effect created')
         window.addEventListener('click', handleClick);
         return () => {
             window.removeEventListener('click', handleClick);
         }
-    },[]);
+    },[step]);
 
+    const handleChange = ({target: {value}}) => {
+        setStep(Number(value));
+    }
 
 
     return (
         <div>
            <p>Counter: {count}</p>
-
+            <input type="text" name="step" value={step} onChange={handleChange}/>
         </div>
     );
 }
-
 export default Counter;
-
-
-
 /*
 this.setState - класова функція зі зміни стану
 const prevState = {
