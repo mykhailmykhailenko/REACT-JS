@@ -1,15 +1,14 @@
 import React, {useState} from "react";
-import MouseTracker from "./components/MouseTracker";
-import WindowSizer from "./components/WindowSizer";
+import UserDashboard from './components/UserDashboard';
+
 function App(props) {
    const [isVisible, setVisible] = useState(true);
 
     return (
-         <> {isVisible && <MouseTracker />}</>
+      <UserDashboard />
 
     )
 }
-
 export default App;
 /*
 Stateless - той, хто не має стану
