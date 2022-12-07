@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import {format, addSeconds} from 'date-fns';
 
-function Timer (props){
+
+function Training (props) {
     const [time, setTime] = useState(new Date(0,0,0,0,0,0));
     const [isRunning, setRunning] = useState(false);
-
-    useEffect(() => {
+   
+    useEffect (() => {
         let intervalId = null;
-        if(isRunning) {
-            intervalId = setTimeout(()=> {
+            if (isRunning) {
+            intervalId = setTimeout (() => {
                 setTime(addSeconds(time, 1))
-            }, 1000);
+            }, 1000)
         }
-        return () => {
-            clearTimeout(intervalId)
-        }
+            return () => {
+                clearTimeout(intervalId)
+            }
     });
 
-    const switchRunning = () => {
-        setRunning(!isRunning);
-    }
+   const switchRunning = () => {
+    setRunning(!isRunning)
+   }
 
-    const reset = () => {
+
+    const  reset = () => {
         setTime(new Date(0,0,0,0,0,0))
     }
 
+        
 
         const buttonText =  isRunning ? 'Stop' : 'Start';
         const buttonClassname = isRunning ? 'green-btn' : 'red-btn';
@@ -35,6 +38,7 @@ function Timer (props){
                <button onClick={reset}>Clear</button>
             </div>
         );
-    }
+   
+}
 
-export default Timer;
+export default Training;
