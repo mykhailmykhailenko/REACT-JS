@@ -1,18 +1,11 @@
 import React, {useState} from "react";
-import Tree from './components/Tree';
-import ThemeContext from "./contexts/ThemeContext";
-import UserContext from "./contexts/UserContext";
-import UserDashboard from './components/UserDashboard';
-import CONSTANTS from "./constants";
-import UserLoader from "./components/UserLoader";
-import { getUsers } from "./api/user.js";
-const {THEMES} = CONSTANTS;
+import WindowSizer from "./components/WindowSizer";
 
 function App(props) {
 
 
     return (
-      <UserLoader />
+      <WindowSizer />
     )
 }
 
