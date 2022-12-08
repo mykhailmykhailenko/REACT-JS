@@ -14,17 +14,17 @@ function Tree (props) {
                      [styles.lightTheme]: theme === THEMES.LIGHT
                   });
 
-      const changeTheme = () => {
-         setTheme(theme === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK);
-      }
+      const changeTheme = useCallback(() => {
+         setTheme(theme => theme === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK);
+      }, []);
 
       const memoizedFunc = useCallback(()=>{
          console.log(props.value);
             }, [props.value]);
 
       useEffect(() => {
-         console.log('функція перестворилась')        
-      }, [memoizedFunc]);
+         console.log('функція перестворилась')  
+      }, [changeTheme]);
 
 
 
