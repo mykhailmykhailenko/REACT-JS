@@ -2,21 +2,20 @@ import React, {useState} from "react";
 import Tree from './components/Tree';
 import ThemeContext from "./contexts/ThemeContext";
 import UserContext from "./contexts/UserContext";
+import UserDashboard from './components/UserDashboard';
 import CONSTANTS from "./constants";
+import UserLoader from "./components/UserLoader";
+import { getUsers } from "./api/user.js";
 const {THEMES} = CONSTANTS;
+
 function App(props) {
-  const [user, setUser] = useState({
-                            firstName: 'John Doe'
-                              });
-  const [theme, setTheme] = useState(THEMES.LIGHT);
+
+
     return (
-      <ThemeContext.Provider value={[theme, setTheme]}>
-      <UserContext.Provider value={[user, setUser]}>
-        <Tree value="supervalue"/>
-      </UserContext.Provider>
-      </ThemeContext.Provider>
+      <UserLoader />
     )
 }
+
 export default App;
 /*
 Контекст
