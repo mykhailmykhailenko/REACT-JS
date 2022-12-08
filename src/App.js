@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import WindowSizer from "./components/WindowSizer";
+import SingForm from "./components/SingForm"
 
 function App(props) {
 
 
     return (
-      <WindowSizer />
+      <SingForm />
     )
 }
 
