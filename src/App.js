@@ -4,26 +4,20 @@ import ThemeContext from "./contexts/ThemeContext";
 import UserContext from "./contexts/UserContext";
 import CONSTANTS from "./constants";
 const {THEMES} = CONSTANTS;
-
 function App(props) {
   const [user, setUser] = useState({
                             firstName: 'John Doe'
                               });
   const [theme, setTheme] = useState(THEMES.LIGHT);
-
     return (
       <ThemeContext.Provider value={[theme, setTheme]}>
       <UserContext.Provider value={[user, setUser]}>
-        <Tree />
+        <Tree value="supervalue"/>
       </UserContext.Provider>
       </ThemeContext.Provider>
     )
 }
-
-
 export default App;
-
-
 /*
 Контекст
 1. Створити контекст
