@@ -1,17 +1,16 @@
-import {withUser} from '../../../../../../HOCs/withUser';
+import UserContext from "../../../../../../contexts/UserContext";
+import {useContext} from 'react';
 
 function Innerchild (props) {
-  const {user: {firstName, lastName, avatar}, setUser} = props;
-      return  (
-          <div style={{border: 'inherit', padding: '20px'}}>
-          <p>Innerchild</p>
-          <p>{firstName} {lastName} </p>
-          <img src={avatar} />
-          <button onClick={setUser}>LogOut</button>
-        </div>
-      )
+  const [user, setUser] = useContext(UserContext);
+  return (
+              <div style={{border: 'inherit', padding: '20px'}}>
+              <p>Innerchild</p>
+              <p>{user.firstName} </p>
+              <button onClick={setUser}>LogOut</button>
+            </div>
+          );
  }
 
- const wrappedComponent = withUser(Innerchild);
 
- export default wrappedComponent;
+ export default Innerchild;
